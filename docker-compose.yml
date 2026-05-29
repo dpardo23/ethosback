@@ -1,0 +1,25 @@
+services:
+  ethoshub-backend:
+    build: 
+      context: . # <-- El contexto ahora es la carpeta actual
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      # Aquí colocarás tus credenciales reales de Supabase más adelante
+      - SUPABASE_DB_URL=jdbc:postgresql://tu-proyecto.supabase.co:5432/postgres
+      - SUPABASE_DB_USER=postgres
+      - SUPABASE_DB_PASSWORD=tu_password
+      - SUPABASE_JWKS_URI=https://tu-proyecto.supabase.co/auth/v1/.well-known/jwks.json
+    volumes:
+      - .:/app   # <-- Mapea la carpeta actual al contenedor
+      - spring-cache:/root/.m2
+    networks:
+      - ethoshub-net
+
+volumes:
+  spring-cache:
+
+networks:
+  ethoshub-net:
+    driver: bridge
