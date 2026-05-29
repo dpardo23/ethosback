@@ -1,35 +1,75 @@
-HELP.md
-target/
+# ── Dependencies ────────────────────────────────────────────────────────────────
 .mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+/.mvn/wrapper/maven-wrapper.properties
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# ── Build & Dist (Spring Boot / Maven) ─────────────────────────────────────────
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
+# ── Environment & Secrets (CRITICAL — never commit) ──────────────────────────────
+.env
+.env.*
+!.env.example
+application-dev.yml
+application-dev.properties
+application-local.yml
+application-local.properties
+.ssh/
+.gnupg/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+# ── Logs ─────────────────────────────────────────────────────────────────────────
+*.log
+logs/
+spring.log
 
-### VS Code ###
+# ── IDE & Editor ─────────────────────────────────────────────────────────────────
 .vscode/
-.claude
-.agents
+.vscode-server/
+.idea/
+*.iml
+*.iws
+*.ipr
+*.classpath
+*.project
+*.settings/
+*.swp
+*.swo
+
+# ── AI & Agent Tooling ────────────────────────────────────────────────────────────
+.claude/
+.claude.json
+.mcp.json
+.agents/
+.copilot/
+
+# ── Dev Container & System ────────────────────────────────────────────────────────
+.local/
+.config/
+.bash_history
+.gitconfig
+
+# ── OS ───────────────────────────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+
+# ── Testing & Coverage ────────────────────────────────────────────────────────────
+test-output/
+jacoco/
+surefire-reports/
+failsafe-reports/
+
+# ── Misc ─────────────────────────────────────────────────────────────────────────
+*.pem
+*.key
+*.cert
+hs_err_pid*
