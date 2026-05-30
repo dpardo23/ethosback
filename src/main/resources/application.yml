@@ -2,7 +2,7 @@ spring:
   application:
     name: EthosHub
   profiles:
-    active: ${SPRING_PROFILES_ACTIVE:dev}
+    active: ${SPRING_PROFILES_ACTIVE:local}
   datasource:
     url: ${SUPABASE_DB_URL}
     username: ${SUPABASE_DB_USER}
@@ -12,6 +12,29 @@ spring:
       resourceserver:
         jwt:
           jwk-set-uri: ${SUPABASE_JWKS_URI}
+  mail:
+    host: ${SMTP_HOST:smtp.gmail.com}
+    port: ${SMTP_PORT:587}
+    username: ${SMTP_USERNAME:}
+    password: ${SMTP_PASSWORD:}
+    from: ${SMTP_FROM:noreply@ethoshub.com}
+    from-name: ${SMTP_FROM_NAME:EthosHub}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+supabase:
+  url: ${SUPABASE_URL}
+  anon-key: ${SUPABASE_ANON_KEY}
+  service-role-key: ${SUPABASE_SERVICE_ROLE_KEY}
+  # Required for HS256 JWT validation. Get it from:
+  # Supabase Dashboard → Settings → API → JWT Settings → JWT Secret
+  # Leave empty ("") if your project uses RS256 — jwk-set-uri will be used instead.
+  jwt-secret: ${SUPABASE_JWT_SECRET:}
 
 server:
   port: ${SERVER_PORT:8080}
